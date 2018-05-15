@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+   background-image: url("../images/chat-bj.jpg");
+   background-repeat: no-repeat;
+   background-position: 0 0;
+    background-size:cover;
+}
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+.systemMessage{
+    color: red;
+}
+.userMessage{
+    float: left;
+    margin-bottom: 10px;
+}
+.userMessage .said{
+    float: left;
+    background-color: #fff;
+}
+
+.userMessage img{;
+    width: 40px;
+    float: left;
+}
+.userMessage .said img{
+    float: right;
+}
+.myMessage img{
+    width: 40px;
+    float: right;
+}
+.myMessage .said img,.userMessage .said img{
+    width: 240px;
+}
+.time{
+    text-align: center;
+}
+.myMessage{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: block;
+    float: right;
+/*    text-align: right;*/
+}
+
+.myMessage .said{
+    float: right;
+    margin-right: 13px;
+}
+.said{
+    max-width: 600px;
+    text-align: left;
+    background-color: #b8db29;
+    display: inline-block;
+    padding: 7px 7px;
+    border-radius: 5px;
+    margin-left: 13px;
+    word-break:break-all;
+word-wrap:break-word;
+ white-space:pre-wrap;
+    position: relative;
+}
+.myMessage .said:after{
+    content: "";
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border-width: 10px;
+    border-style: solid;
+    position: absolute;
+    top: 8px;
+    border-color: transparent transparent transparent #b8db29;
+    right: -20px;
+
+}
+.userMessage .said:before{
+    content: "";
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border-width: 10px;
+    border-style: solid;
+    position: absolute;
+    top: 8px;
+    border-color: transparent #fff transparent transparent;
+    left:-20px;
+}
+.green{
+    color: green;
+}
+.blue{
+    color: blue;
+}
+.man-color{
+    color: purple;
+    font-weight: bold ;
+}
+.girl-color{
+    color: pink;font-weight: bold;
+}
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.contact, .message-window {
+    height: 680px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.main-window {
+    margin-top: 100px;
+
+}
+
+.contact {
+    border: 1px solid black;
+}
+
+.message-window {
+    border: 1px solid black;
+}
+.user-menu{
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.self-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.self-info {
+    margin-bottom: 20px;
+    position: relative;
+}
+.self-info span{
+    color: #fff
+}
+.self-info a{
+    font-size: 18px;
+}
+.search-icon {
+    cursor: pointer;
+}
+.select-menu{
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.select-menu li {
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+.select-menu li:first-child{
+    border-right: 1px solid #ccc;
+}
+
+.contact-info {
+
+    height: 485px;
+    overflow: auto;
+}
+.newUserSex{
+
+}
+.contact-info li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+}
+.user-nav{
+    position: absolute;
+    border: 1px #ccc solid;
+    left: 140px;
+    top:15px;
+    float: right;
+    display: none;
+    z-index: 10;
+}
+.user-nav a{
+    display: block;
+    padding: 0px 20px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+.contact-info li img {
+    width: 40px;
+    height: 40px;
+}
+
+/*右侧聊天消息*/
+.window-title {
+    text-align: center;
+    line-height: 40px;
+    border-bottom: 1px solid #d6d6d6;
+    margin-top: 0px;
+    font-size: 14px;
+    color: #000;
+}
+
+#messages{
+    height: 470px;
+    border-bottom: 1px solid #d6d6d6;
+    overflow-y: auto;
+}
+.icon {
+    position: relative;
+    margin-top: 10px;
+}
+
+.icon li {
+    font-size: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    width: auto;
+    float: left;
+    position: relative;
+}
+.icon li form{
+position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 14px;
+    height: 20px;
+    width: 30px;
+    opacity: 0;
+}
+.icon li form input{
+    height: 20px;
+    width: 20px;
+}
+
+#message{
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    resize: none;
+color: #fff;
+}
+
+section {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/*登陆*/
+#login-window {
+    width: 235px;
+    height: 350px;
+    padding: 20px 10px;
+    background-color: #fff;
+    box-shadow: 3px 3px 10px 4px rgba(0, 0, 0, 0.3);
+}
+
+#self-head {
+    text-align: center;
+    position: relative;
+}
+
+#self-head .self-img img {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+}
+
+#self-head .change-head {
+    position: absolute;
+    left: 226px;
+    top: 0;
+    width: 22px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+#self-head .pic-library {
+    position: absolute;
+    left: 226px;
+    top: 0;
+    width: 200px;
+}
+
+#self-head .pic-library li {
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+#self-head .pic-library li img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.explain {
+    color: red;
+}
+
+.username {
+    margin-top: 15px;
+}
+
+#whisper{
+    width: 300px;
+    height: 150px;
+    border: 1px solid red;
+    position: absolute;
+    right: -1490px;
+    bottom: 590px;
+}
+.chat-bq{
+    width: 425px;
+    height: 202px;
+    border: 1px solid #ccc;
+    position: absolute;
+    left: -11px;
+    top: -212px;
+    display: none;
+}
+.chat-bq:after{
+    content: '';
+    position: absolute;
+    left: 16px;
+    bottom: -20px;
+    margin-left: -7px;
+    margin-top: -1px;
+    border: 10px solid transparent;
+    border-top-color: #ccc;
+}
+.chat-bq a{
+    float: left;
+    cursor: pointer;
+}
+.chat-bq a{
+    width: 28px;
+    height: 28px;
+    background: url("../images/chat-bq.png");
+    background-repeat: no-repeat;
+}
+.said .bqbox{
+    width: 28px;
+    height: 28px;
+    background: url("../images/chat-bq.png");
+    display: inline-block;
+}
+#bj{
+    position: absolute;
+    width: 500px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #0a9dc7;
+    left: 20px;
+    top:20px;
+}
+#bj input{
+    padding-left: 20px;
+    width: 22px;
+    height: 22px;
+    display: none;
+
+}
+#bj label{
+    cursor: pointer;
+}
+#bj label:first-child span{
+    background-color: red;
+
+}
+.reg{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    background-color: black;
+}

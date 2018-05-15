@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-2.2.0.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body class="bg-info" style='background-image: url("images/chat-bj.jpg")'>
+<!--群聊天窗口-->
+<section id="chat-window" class="hide">
+    <div class="container">
+        <div class="row main-window">
+            <!-- 左侧联系人-->
+            <div class="col-sm-3 contact">
+                <!--自己信息-->
+                <div id="my-info">
+
+                </div>
+                <div class="form-group has-success search">
+                    <div class="input-group">
+                        <span class="input-group-addon fa fa-search search-icon"></span>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <ul class="row select-menu green">
+                    <li class="col-sm-6"><span>朋友</span></li>
+                    <li class="col-sm-6 crowd"><span>群聊</span></li>
+                </ul>
+                <!--新用户信息-->
+                <ul class="contact-info">
+                    <!--            <li><img src="images/head/1.jpg"> <span>张三</span>&nbsp[</span><span class=fa fa-mars></span>] <a class="fa fa-bars pull-right user-menu"></a> <div class="user-nav"> <a>私聊</a> <a>加为好友</a> <a>删除</a></div></li>
+                                     <li><img src="images/head/1.jpg"> <span>张三</span>&nbsp[</span><span class=fa fa-mars></span>] <a class="fa fa-bars pull-right user-menu"></a> <div class="user-nav"> <a>私聊</a> <a>加为好友</a> <a>删除</a></div></li>-->
+                </ul>
+            </div>
+
+            <!--右侧聊天消息-->
+            <div class="col-sm-9 message-window">
+                <h4 class="window-title">群聊</h4>
+                <div id="messages">
+
+                </div>
+                <ul class="icon">
+                    <li><a class="fa fa-smile-o bq-library" title="表情"></a></li>
+                    <li><a class="fa fa-gift" title="礼物"></a></li>
+                    <li><a class="fa fa-photo" title="图片">
+                        <form id="uploadForm" name="uploadForm" enctype="multipart/form-data">
+                            <input type="file" name="file">
+                        </form>
+                    </a></li>
+                    <div class="chat-bq"></div>
+                </ul>
+                <div id="input">
+                    <textarea placeholder="输入内容" id="message" autofocus style="color: #fff"></textarea>
+                </div>
+                <button type="button" class="btn btn-md btn-info pull-right" id="send-btn">发送</button>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--私聊天窗口-->
+<section class="hide" id="whisper">
+
+</section>
+<!--登陆窗口-->
+<section id="login-window">
+    <div id="self-head">
+        <div class="self-img">
+            <img src="images/1.jpg">
+        </div>
+        <span class="change-head">更换头像</span>
+        <ul class="pic-library hide">
+
+        </ul>
+    </div>
+    <form>
+        <input type="text" placeholder="昵称" class="form-control" id="username" name="username">
+        <span class="explain hide"></span>
+        <div class="select-sex pull-right">
+            <label><input type="radio" name="sex" id="man" value="男" checked><span class="fa fa-mars"
+                                                                                   style="color: purple;font-weight: bold"></span></label>
+            <label><input type="radio" name="sex" id="girl" value="女"><span class="fa fa-venus"
+                                                                            style="color: pink;font-weight: bold"></span></label>
+        </div>
+        <div class="clearfix"></div>
+        <button type="button" class="btn btn-success btn-md pull-right login-btn">登陆</button>
+    </form>
+</section>
+<div id="bj">
+    <label><input type="radio" name="bj" value="../images/chat-bj.jpg" checked="checked"><span class="reg"></span>经典款</label>
+    <label><input type="radio" name="bj" value="../images/chat-bj1.jpg"><span class="reg"></span>钻石款</label>
+    <label> <input type="radio" name="bj" value="../images/chat-bj2.jpg"><span class="reg"></span>星空款</label>
+    <label><input type="radio" name="bj" value="../images/chat-bj3.jpg"><span class="reg"></span>清新款</label>
+    <label><input type="radio" name="bj" value="../images/chat-bj4.jpg"><span class="reg"></span>画布款</label>
+    <label><input type="radio" name="bj" value="../images/chat-bj5.jpg"><span class="reg"></span>宇宙款</label>
+</div>
+</body>
+</html>
