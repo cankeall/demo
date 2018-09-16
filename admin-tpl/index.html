@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        代理商后台
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="Thu, 19 Nov 1900 08:52:00 GMT">
+    <link rel="shortcut icon" href="./resource/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="./resource/images/favicon/favicon.png">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/css/themes/style1/orange-blue.css" class="default-style">
+    <link href="./resource/css/mobiscroll.css?v=1" rel="stylesheet" />
+    <link href="./resource/css/mobiscroll_date.css?v=1" rel="stylesheet" />
+    <link href="./resource/vendors/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <style type="text/css">
+        td {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+    </style>
+    <script>
+
+        if (top.location != self.location)
+            top.location = self.location;
+    </script>
+</head>
+
+<body class="sidebar-default header-fixed" ondblclick="return false;">
+    <!--BEGIN BACK TO TOP-->
+    <a id="totop" href="#">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!--END BACK TO TOP-->
+    <!--BEGIN TOPBAR-->
+    <div id="header-topbar-option-demo" class="page-header-topbar" style="z-index:100">
+        <nav id="topbar" role="navigation" style="margin-bottom: 0; z-index: 2;" class="navbar navbar-default navbar-static-top">
+            <div class="navbar-header" style="position:absolute;left:0px; bottom:0px;">
+                <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="logo" href="/default" class="navbar-brand">
+                    <span class="fa fa-rocket"></span>
+                    <span id="glht" class="logo-text">
+                        代理商后台
+                    </span>
+                    <span style="display: none" class="logo-text-icon">M</span>
+                </a>
+            </div>
+
+            <div class="topbar-main" id="Ttopbar-main" style="position:absolute;left:250px; bottom:0px;">
+
+                <a id="menu-toggle" href="#" class="hidden-xs">
+                    <i class="fa fa-bars"></i>
+                    <!-- <marquee id="affiche" align="left" behavior="scroll" direction="left" height="15" width="1100" hspace="50" vspace="5" loop="-5"
+                        scrollamount="10" scrolldelay="100" onmouseout="this.start()" onmouseover="this.stop()">
+                        <label id="gg"></label>
+                    </marquee> -->
+                </a>
+
+                <ul class="nav navbar navbar-top-links navbar-right mbn">
+                    <li>当前登录账号:
+                        <label id="loginuser">
+                            HD518
+                        </label>&nbsp;&nbsp;
+                        <label id="loginsq">
+                            北京时间
+                        </label>
+                    </li>
+                    <li class="dropdown topbar-user">
+                        <a data-hover="dropdown" href="#" class="dropdown-toggle">
+                            <img src="./resource/images/pic.png" width="48" height="48" alt="" class="img-responsive img-circle" /> &nbsp;
+                            <span class="hidden-xs"></span>
+                            &nbsp;
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user pull-left">
+                            <li>
+                                <a href="/default">
+                                    <i class="fa fa-home"></i>
+                                    首页
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" onclick="openlink('/updateuserpwd', '修改密码',1001);">
+                                    <i class="fa fa-lock"></i>
+                                    <span class="submenu-title">修改密码</span>
+                                </a>
+                            </li>
+                            <li id="sfliid">
+                                <a href="javascript:void(0);" onclick="openlink('/updateusersfpwd', '身份密码',1002);">
+                                    <i class="fa fa-lock"></i>
+                                    <span class="submenu-title">身份密码</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" id="loginouts">
+                                    <i class="fa fa-sign-out"></i>
+                                    <span class="submenu-title">安全退出</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--END TOPBAR-->
+
+    <div id="wrapper">
+        <!--左侧导航菜单开始-->
+        <nav id="sidebar" role="navigation" class="navbar-default navbar-static-side">
+            <div class="sidebar-collapse menu-scroll" id="divMenu">
+                <ul id="side-menu" class="nav">
+                    <li style="display:none">
+                        <li class="active">
+                            <a href="javascript:void(0);"><i class="fa fa-desktop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">运营管理</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/iPwhitelis" data-menuid="126"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">IP白名单</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/previewproxy" data-menuid="300"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">数据总览</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/DownloadStation" data-menuid="355"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">资料下载站</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="fa fa-desktop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">游戏设置</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/gameinfo" data-menuid="102"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">游戏管理</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="fa fa-desktop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">账号管理</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/proxyaccountdl" data-menuid="302"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">代理账号</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/memberInfo" data-menuid="71"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">会员账号</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/user" data-menuid="50"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">子账号</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="fa fa-desktop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">报表管理</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/winAndLoseReport" data-menuid="81"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">输赢报表</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/gameResult" data-menuid="86"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">游戏结果</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/gameLog" data-menuid="91"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">对局日志解析</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/CashOrderDetail" data-menuid="346"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">现金网上下分</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/proxyMoneyChangeDetail" data-menuid="141"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">代理点数明细</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/proxyStatis" data-menuid="146"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">代理点数统计</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/usermoneychangedetail" data-menuid="151"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">会员点数明细</span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/memberstatis" data-menuid="156"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">会员点数统计</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="fa fa-desktop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">风控管理</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/gameRecordSort" data-menuid="186"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">玩家输赢监控</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="fa fa-desktop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">系统设置</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="javascript:void(0);" ondblclick="return false;" data-menuurl="/rolemanage" data-menuid="29"><i class="fa fa-puzzle-piece"></i><span class="submenu-title">角色管理</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航菜单结束-->
+        <div id="page-wrapper">
+            <ul class="closeable-tabs nav nav-tabs" id="ulTab"></ul>
+            <div id="myTab" class="tab-content">
+                <div id="tab0" class="tab-pane fade active in" style="background-color:#f0f2f5;">
+                    <input type="hidden" id="hidpowerid" name="hidpowerid" />
+                    <iframe id="iframepage" frameborder="0" src="./CashOrderDetail.html" style="width:100%; height:820px;" onscroll="scroll"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./resource/js/jquery-1.10.2.min.js"></script>
+    <script src="./resource/js/jquery-migrate-1.2.1.min.js"></script>
+    <!--loading bootstrap js-->
+    <script src="./resource/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./resource/vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+    <script src="./resource/js/html5shiv.js"></script>
+    <script src="./resource/js/respond.min.js"></script>
+    <script src="./resource/vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="./resource/vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="./resource/vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="./resource/vendors/iCheck/icheck.min.js"></script>
+    <script src="./resource/vendors/iCheck/custom.min.js"></script>
+    <script src="./resource/vendors/jquery-notific8/jquery.notific8.min.js"></script>
+    <script src="./resource/js/jquery.menu.js"></script>
+    <script src="./resource/vendors/holder/holder.js"></script>
+    <script src="./resource/vendors/responsive-tabs/responsive-tabs.js"></script>
+    <script src="./resource/vendors/jquery-news-ticker/jquery.newsTicker.min.js"></script>
+    <script src="./resource/vendors/moment/moment.js"></script>
+    <script src="./resource/vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="./resource/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="./resource/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./resource/common.js"></script>
+    <script src="./resource/usersgrant.js"></script>
+    <!-- <script src="./resource/sysmanage/SysBulletin.js"></script> -->
+    <script type="text/javascript">
+        //if (document.body.clientWidth < 500) {
+        //$('#iframepage').css('height', document.body.clientHeight - 120);
+        //}
+        $(window).on("load resize", function () {
+            var bodyHeight = document.body.clientHeight - 100;
+            var iframe = $("iframe");
+            iframe.css("height", bodyHeight);
+            $.each(iframe, function () {
+                $(this).contents().find(".page-content").css("height", bodyHeight);
+            });
+        });
+
+        $("#loginouts").click(function () {
+            var msg = '确定要退出吗?';
+            if (confirm(msg) == true) {
+                $.post("/userExit", function (data) {
+                    data = JSON.parse(data);
+                    if (data.code == 0) {
+                        window.location.href = "/default";
+                    }
+                });
+            }
+            else {
+                return false;
+            }
+        });
+        function openlink(link, title, menuid) {
+            var obj = new parent.menu();
+
+            obj.openLink(title, link, menuid);
+        }
+
+        $(function () {
+            var myTab = document.getElementById("myTab");
+            var ulTab = document.getElementById("ulTab");
+            var title = $("#glht").text().trim();
+            if (title == "代理商后台") { $("#sfliid").hide(); }
+            // $.get("/sysbulletin/GetGG", function (data) {
+            //     data = JSON.parse(data);
+            //     var strHtml = "";
+            //     if (data.isagent == 1) {
+            //         $("#sfliid").hide();
+            //         $("#glht").text("代理商后台");
+            //     } else {
+            //         $("#glht").text("开发商后台");
+            //     }
+            //     if (data.code == 1000) {
+            //         $("#gg").empty().html("");
+            //         return false;
+            //     }
+            //     if (data.code != 1) {
+            //         $.each(data.results, function (index) {
+            //             strHtml += data.results[index].Conntent + "<label style=\"margin-left:500px\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>";
+            //         })
+            //         $("#gg").empty().html(strHtml);
+            //     }
+            //     else {
+            //         $("#gg").empty().html("");
+            //         return false;
+            //     }
+            // });
+            if (com.IsPC()) {
+                $("#menu-toggle").show();
+                myTab.style = "padding:0px; top:40px; position:absolute; width:100%;";
+                ulTab.style = "position:fixed;";
+                $("#glht").show();
+            }
+            else {
+                myTab.style = "padding:0px";
+                $("#menu-toggle").hide();
+                $("#glht").hide();
+            }
+            var menuObj = new menu();
+
+            menuObj.menuSelect();
+        });
+
+        var menu = function () {
+            this.selMenuId = 0,
+                this.lsttime = 0,
+                this.menuSelect = function () {
+                    var _self = this;
+
+                    $("#side-menu").find("ul li").click(function (event) {
+                        // 生成tab页面
+                        var menuid = $(this).find("a").attr("data-menuid");
+                        var menuname = $(this).text();
+                        var menuurl = $(this).find("a").attr("data-menuurl");
+                         console.log(menuurl);
+                        $("#hidpowerid").val(menuid);
+
+                        var diff = event.timeStamp - _self.lsttime;
+                        if ((_self.lsttime != 0 && diff < 1000) && (_self.selMenuId != 0 && _self.selMenuId == menuid)) {
+                            _self.lsttime = event.timeStamp;
+                            return false;
+                        }
+
+                        if (!_self.existsTab(menuid)) {
+                            _self.addTab(menuid, menuname, menuurl);
+                        }
+                        else {
+                            _self.selTab(menuid, menuurl);
+                        }
+
+                        _self.lsttime = event.timeStamp;
+
+                        if (!com.IsPC())
+                            $(".navbar-toggle").click();
+                    });
+                },
+                this.existsTab = function (menuid) {
+                    var objTab = $("#ulTab").find("li[id=li_" + menuid + "]");
+                    if (objTab.length > 0)
+                        return true;
+                    else
+                        return false;
+                },
+                this.selTab = function (menuid, menuurl) {
+                    var _self = this;
+
+                    _self.selMenuId = menuid;
+                    parent.$("#hidpowerid").val(menuid);
+                    $(".nav-tabs li").removeClass("active");
+
+                    var objTab = $("#ulTab").find("li[id=li_" + menuid + "]");
+                    if (objTab.length > 0) {
+                        objTab.addClass("active");
+                        _self.showContent(menuid, menuurl);
+                    }
+                },
+                this.addTab = function (menuid, menuname, menuurl) {
+                    var _self = this;
+
+                    if (com.IsPC()) {
+                        var tabWidth = $("#ulTab").width();
+                        var menuWidth = $("#sidebar").width();
+                        if ($(window).width() - tabWidth - menuWidth < 100) {
+                            alert("当前打开的页签过多,请关闭之后再打开!");
+                            return false;
+                        }
+                    }
+
+                    _self.selMenuId = menuid;
+
+                    $(".nav-tabs li").removeClass("active");
+
+                    var strHtml = "<li class=\"active\" id=\"li_" + menuid + "\" data-menuid=\"" + menuid + "\"><a href=\"#tab" + menuid + "\" data-toggle=\"tab\"><button type=\"button\" class=\"close closeTab mlm\">x</button>" + menuname + "</a></li>";
+                    $("#ulTab").append(strHtml);
+                    _self.showContent(menuid, menuurl);
+
+                    $("#ulTab").find(".close").click(function (event) {
+                        event.preventDefault();
+
+                        var menuid = $(this).parent().parent().attr("data-menuid");
+                        _self.closedTab(menuid);
+
+                        var objSel = $("#ulTab").find("li[id=li_" + _self.selMenuId + "]");
+                        if (objSel.length == 0) {
+                            var lstLi = $("#ulTab").find("li:last");
+                            menuid = lstLi.find("button").parent().parent().attr("data-menuid");
+                        }
+                        if (menuid == undefined) {
+                            $("#tab0").show();
+                        } else {
+                            _self.selTab(menuid);
+                            _self.showContent(menuid);
+                            _self.selMenuId = menuid;
+                        }
+                        return false;
+                    });
+
+                    $("#ulTab").find("a").click(function (event) {
+                        event.preventDefault();
+
+                        var menuid = $(this).parent().attr("data-menuid");
+                        _self.selTab(menuid);
+                        _self.showContent(menuid);
+                        _self.selMenuId = menuid;
+
+                        return false;
+                    });
+                },
+                this.showContent = function (menuid, menuurl) {
+                    $("#myTab").find("div").hide();
+                    var objtab = $("#myTab").find("#tab" + menuid);
+                    if (objtab.length > 0 && menuurl != null) {
+                        $("#myTab").find("#tab" + menuid).remove();
+                    }
+
+                    if (menuurl != null) {
+                        var objdiv = "<div id=\"tab" + menuid + "\" class=\"tab-pane fade active in\" style=\"background-color:#f0f2f5;\"><iframe id=\"iframepage\" frameborder=\"0\" src=\"" + menuurl + "\" style=\"width:100%;height:" + (document.body.clientHeight - 110) + "px;\" onscroll=\"scroll\"></iframe></div>";
+                        $("#myTab").append(objdiv);
+                    } else {
+                        $("#myTab").find("#tab" + menuid).show();
+                    }
+                },
+                this.closedTab = function (menuid) {
+                    var _self = this;
+
+                    $("#ulTab").find("li[id=li_" + menuid + "]").remove();
+                    $("#myTab").find("div[id=tab" + menuid + "]").remove();
+                    _self.selMenuId = menuid;
+                },
+                this.openLink = function (menuname, menuurl, menuid) {
+                    var _self = this;
+
+                    var arr = $(parent.document).find("#side-menu .submenu-title");
+                    //var menuid = 0;
+                    $.each(arr, function () {
+                        if ($(this).text() == menuname) {
+                            menuid = $(this).parents("a").attr("data-menuid");
+                            return false;
+                        }
+                    });
+
+                    if (!_self.existsTab(menuid) || menuid == undefined)
+                        _self.addTab(menuid, menuname);
+                    else
+                        _self.selTab(menuid);
+
+                    _self.showContent(menuid, menuurl);
+                }
+        };
+
+    </script>
+    <script src="./resource/js/main.js"></script>
+</body>
+
+</html>

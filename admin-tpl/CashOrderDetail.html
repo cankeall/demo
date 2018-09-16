@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        现金网上下分
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="Thu, 19 Nov 1900 08:52:00 GMT">
+    <link rel="shortcut icon" href="./resource/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="./resource/images/favicon/favicon.png">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/css/themes/style1/orange-blue.css" class="default-style">
+    <link href="./resource/vendors/datepicker/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="./resource/vendors/bootstrap/js/bootstrap-table.min.css" rel="stylesheet" />
+    <style type="text/css">
+        td {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+
+        td,
+        th {
+            text-align: center;
+        }
+
+        .ct {
+            width: 50px;
+        }
+
+        .col-md-1,
+        .col-md-2 {
+            float: right;
+        }
+
+        #BEGIN_DATE,
+        #END_DATE {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="sidebar-default header-fixed">
+    <input type="hidden" id="hidIsAgent" name="hidIsAgent" value="1" />
+    <!--主体内容开始-->
+    <div class="page-content" id="divGameInfo" style="overflow:hidden; overflow-y:auto;">
+        <div id="table-action" class="row">
+            <div class="col-lg-12">
+                <div id="tableactionTabContent" class="tab-content" style="margin-bottom:0px; padding:0px;">
+                    <div id="table-table-tab" class="tab-pane fade in active">
+
+                        <div class="panel-body">
+                            <!--条件检索开始-->
+                            <form id="sf" action="" method="post">
+
+                                <div class="row">
+                                    <div class="col-md-1" style="padding-left:0px;">
+                                        <a href="#" class="btn btn-success" id="btnExportExcel">
+                                            <i class="fa fa-search"></i>
+                                            &nbsp; 导出EXCEL
+                                        </a>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a href="#" class="btn btn-success" id="btnSearch">
+                                            <i class="fa fa-search"></i>
+                                            &nbsp; 搜索
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" id="txtCreateUser" name="txtCreateUser" placeholder="操作人" class="form-control" />
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" id="txtAccounts" name="txtAccounts" placeholder="玩家账号" class="form-control" />
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select id="selOrderType" data-style="btn-grey" class="selectpicker form-control">
+                                            <option value="-2">账变类型</option>
+                                            <option value="6">从现金网上分</option>
+                                            <option value="7">从现金网下分</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" id="END_DATE" name="END_DATE" placeholder="结束日期" class="form-control" readonly/>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" id="BEGIN_DATE" name="BEGIN_DATE" placeholder="开始日期" class="form-control" readonly/>
+
+                                    </div>
+                                </div>
+                            </form>
+                            <br />
+                            <!--条件检索结束-->
+                            <div id="no-more-tables">
+                                <div style="float:right; color:red;" id="divTotal"></div>
+                                <table id="tblData" class="table table-condensed table-advanced cf">
+                                    <tbody><tr data-index="0" data-uniqueid="6101320180912015032hhhzhouxx1"> <td style="">6101320180912015032hhhzhouxx1</td> <td style="">2018-09-12 01:49:25</td> <td style="">HD518</td> <td style="">61013_hhhzhouxx1</td> <td style="">从现金网上分</td> <td style="">0.00</td> <td style="">42.00</td> <td style="">42.00</td> <td style="">112.97.226.229</td> <td style="">61013_hhhzhouxx1</td> </tr><tr data-index="1" data-uniqueid="6101320180912014956hhhzhouxx1"> <td style="">6101320180912014956hhhzhouxx1</td> <td style="">2018-09-12 01:48:48</td> <td style="">HD518</td> <td style="">61013_hhhzhouxx1</td> <td style="">从现金网下分</td> <td style="">42.00</td> <td style="">-42.00</td> <td style="">0.00</td> <td style="">112.97.226.229</td> <td style="">61013_hhhzhouxx1</td> </tr><tr data-index="2" data-uniqueid="6101320180912014951hhhzhouxx1"> <td style="">6101320180912014951hhhzhouxx1</td> <td style="">2018-09-12 01:48:43</td> <td style="">HD518</td> <td style="">61013_hhhzhouxx1</td> <td style="">从现金网上分</td> <td style="">0.00</td> <td style="">42.00</td> <td style="">42.00</td> <td style="">112.97.226.229</td> <td style="">61013_hhhzhouxx1</td> </tr><tr data-index="3" data-uniqueid="6101320180912014531hhhzhouxx1"> <td style="">6101320180912014531hhhzhouxx1</td> <td style="">2018-09-12 01:44:24</td> <td style="">HD518</td> <td style="">61013_hhhzhouxx1</td> <td style="">从现金网下分</td> <td style="">5.28</td> <td style="">-5.28</td> <td style="">0.00</td> <td style="">112.97.226.229</td> <td style="">61013_hhhzhouxx1</td> </tr></tbody>
+                                </table>
+                                <input type="hidden" id="hidtotal" name="hidtotal" value="0" />
+                            </div>
+                        </div>
+                        <!--响应式表格容器结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./resource/js/jquery-1.10.2.min.js"></script>
+    <script src="./resource/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./resource/vendors/moment/moment.js"></script>
+    <script src="./resource/vendors/bootstrap/js/bootstrap-table.min.js"></script>
+    <script src="./resource/vendors/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+    <script src="./resource/vendors/datepicker/jquery.datetimepicker.js"></script>
+    <script src="./resource/common.js"></script>
+    <script src="./resource/usersgrant.js"></script>
+    <script src="./resource/sysmanage/CashOrderDetail1.js"></script>
+</body>
+
+</html>

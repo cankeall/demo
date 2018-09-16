@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        会员账号
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="Thu, 19 Nov 1900 08:52:00 GMT">
+    <link rel="shortcut icon" href="./resource/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="./resource/images/favicon/favicon.png">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/css/themes/style1/orange-blue.css" class="default-style">
+    <link href="./resource/css/mobiscroll.css?v=1" rel="stylesheet" />
+    <link href="./resource/css/mobiscroll_date.css?v=1" rel="stylesheet" />
+    <link href="./resource/vendors/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="./resource/vendors/ztree/zTree.min.css" rel="stylesheet" />
+    <link href="./resource/vendors/ztree/zTree.theme.metro.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+        td {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+
+        td, th {
+            text-align: center;
+        }
+
+        .ct {
+            width: 50px;
+        }
+    </style>
+    </head>
+
+<body class="sidebar-default header-fixed" style="overflow:scroll;">
+    <!--面包削导航结束-->
+    <!--主体内容开始-->
+    <div class="page-content">
+        <div id="table-action" class="row">
+            <div class="col-lg-12">
+                <div id="tableactionTabContent" class="tab-content">
+                    <div id="table-table-tab" class="tab-pane fade in active">
+
+                        <div class="panel-body">
+                            <div class="col-md-1" style="float: right; margin-right: -0.5%;display: none" id="mhserch" >
+                                <a href="#" class="btn btn-success" id="btnserch">
+                                    <i class="fa fa-search"></i>
+                                    &nbsp;<span id="mhss">模糊搜索</span> 
+                                </a>
+                            </div>
+                            <div class="col-md-1" style="float: right; margin-right: 1%;display: none"  id="serchJZ" >
+                                <a href="#" class="btn btn-success" id="btnserchJZ">
+                                    <i class="fa fa-search"></i>
+                                    &nbsp; 搜索
+                                </a>
+                            </div>
+                            <div class="col-md-2" style="float:right" >
+                                <input type="text" id="ProxyName" name="ProxyName" placeholder="会员名称" class="form-control" value="" />
+                            </div>
+                            <div class="col-md-2" style="float:right;display: none" id="proxyidshow" >
+                                <input type="text" id="Proxyaccount" name="ProxyName" placeholder="代理ID" class="form-control" value="" />
+                            </div>
+                            <div class="col-md-1" style="float: right; margin-right: -0.5%;display: none" id="statusserch">
+                                <select id="selstatus" data-style="btn-grey" class="selectpicker form-control">
+                                    <option value="-1">全部 </option>
+                                    <option value="0">开启</option>
+                                    <option value="1">封停</option>
+                                    <option value="2">黑名单</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3" style="float:right">
+                                <label id="msg" style="color: red; margin-top: 10px; "></label>
+                            </div>
+                            <br />
+                            <!-- 操作列表结束 -->
+                            <div id="no-more-tables" style="margin-top:5px;">
+                                <table id="tblTable" class="table table-condensed table-advanced cf" ></table>
+                                <input id="hidtotal" type="hidden" value="0" />
+                                <input id="hidid" type="hidden" />
+                                <input id="hidIdApi" type="hidden" />
+                                <input id="hidsymoney" type="hidden" />
+                                <input id="hidserch" type="hidden" value="1" />
+                            </div>
+                            <!--响应式表格容器结束-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="MoneyMerchant" tabindex="-1" data-backdrop="static" data-keyboard="false" class="modal fade" style="z-index:5000">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                        <h4 class="modal-title"><label id="labtitlecz"></label></h4><h5>&nbsp;该会员的余额:&nbsp;&nbsp;<label id="symoney"></label></h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm2" name="editForm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="CZAccount" class="control-label" id="labcztitle"></label>
+                                        <input id="CZAccount" name="CZAccount" type="text" class="form-control" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="CZMoney" class="control-label" id="labczmoney"></label>
+                                        <input id="CZMoney" name="CZMoney" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default" id="btncancel"> 取消</button>
+                        <button type="button" class="btn btn-primary" id="btnsavemoney">保存</button>
+                        <input id="hidImemberid" type="hidden" />
+                        <input id="hidChannelID" type="hidden" />
+                        <input id="hidIdtype" type="hidden" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="DetailsMerchant" tabindex="-1" data-backdrop="static" data-keyboard="false" class="modal fade" style="z-index:5000">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                        <h4 class="modal-title">信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm3" name="editForm">
+                            <div class="row">
+                                <div class="col-md-6" id="proxycreatetime">
+                                    <div class="form-group">
+                                        <label for="CreateTime" class="control-label" id="labcztitle">创建时间</label>
+                                        <input id="CreateTime" name="CreateTime" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="proxylogintime">
+                                    <div class="form-group">
+                                        <label for="LastLoginTime" class="control-label" id="labczmoney">最后登录时间</label>
+                                        <input id="LastLoginTime" name="LastLoginTime" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="proxylincede">
+                                        <label for="lineCode" class="control-label" id="labczmoney">LineCode</label>
+                                        <input id="lineCode" name="lineCode" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="validBet" class="control-label" id="labczmoney">总有效投注</label>
+                                        <input id="validBet" name="validBet" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="AllWinCount" class="control-label" id="labczmoney">总输赢</label>
+                                        <input id="AllWinCount" name="AllWinCount" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="monthValidBet" class="control-label" id="labczmoney">当月有效投注</label>
+                                        <input id="monthValidBet" name="monthValidBet" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="MWinCount" class="control-label" id="labczmoney">当月输赢</label>
+                                        <input id="MWinCount" name="MWinCount" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dayValidBet" class="control-label" id="labczmoney">当日有效投注</label>
+                                        <input id="dayValidBet" name="dayValidBet" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="DWinCount" class="control-label" id="labczmoney">当日输赢</label>
+                                        <input id="DWinCount" name="DWinCount" class="form-control">
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6" id="Browser">
+                                    <div class="form-group">
+                                        <label for="Browser" class="control-label" id="labczmoney">浏览器型号</label>
+                                        <input id="Browser" name="Browser" class="form-control">
+                                    </div>
+                                </div> -->
+                                <div class="col-md-12" id="playsgame"> 
+                                    <div class="form-group">
+                                        <label for="playsgame" class="control-label" id="labczmoney">玩过的游戏</label>
+                                        <div id="tblTablediv"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default" id="btncancel"> 取消</button>
+                        <input id="hidplayer" type="hidden" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Updatestatus" tabindex="-1" data-backdrop="static" data-keyboard="false" class="modal fade" style="z-index:5000">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                        <h4 class="modal-title">状态设定</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm" name="editForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="selradio" class="control-label">状态更改</label>
+                                        <select id="selradio" name="selradio" class="form-control">
+                                            <option value="0">开启</option>
+                                            <option value="1">封停</option>
+                                            <option value="2">黑名单</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Remarks" class="control-label">备注</label>
+                                        <input id="Remarks" name="Remarks" class="form-control" placeholder="请填设定状态原因">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default" id="btncancel"> 取消</button>
+                        <button type="button" class="btn btn-primary" id="btnsavestatus">保存</button>
+                        <input id="hidIds" type="hidden" />
+                        <input id="hidMember" type="hidden" />
+                        <input id="hidchannelID" type="hidden" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="countgold" tabindex="-1" data-backdrop="static" data-keyboard="false" class="modal fade" style="z-index:5000">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                        <h4 class="modal-title">查看</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm4" name="editForm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="coungold" class="control-label">游戏内携带分数（玩家对局结束后更新）</label>
+                                        <input id="coungold" name="coungold" class="form-control" disabled>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default" id="btncancel"> 取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="PSFPwdMerchant" tabindex="-1" data-backdrop="static" data-keyboard="false" class="modal fade" style="z-index:5000">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                        <h4 class="modal-title"><label id="labtitle3"></label></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm1" name="editForm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class=" form-group">
+                                        <label for="PSpwd" class="control-label">请输入唯一身份标识</label>
+                                        <input id="PSpwd" name="PSpwd" type="password" class="form-control" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default" id="btncancel"> 取消</button>
+                        <button type="button" class="btn btn-primary" id="btnsavepwdPT">保存</button>
+                        <input id="hidsfaccount" type="hidden" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <link href="./resource/vendors/bootstrap/js/bootstrap-table.min.css" rel="stylesheet" />
+        <!--主体内容结束-->
+
+        <script src="./resource/js/jquery-1.10.2.min.js"></script>
+        <script src="./resource/vendors/bootstrap/js/bootstrap.min.js"></script>
+        <script src="./resource/vendors/moment/moment.js"></script>
+        <script src="./resource/vendors/moment/moment2.js"></script>
+        <script src="./resource/vendors/bootstrap/js/bootstrap-table.js"></script>
+        <link href="./resource/vendors/bootstrap/js/bootstrap-table.min.css" rel="stylesheet" />
+        <script src="./resource/vendors/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+        <script src="./resource/common.js"></script>
+        <script src="./resource/md5.js"></script>
+        <script src="./resource/usersgrant.js"></script>
+        <script src="./resource/sysmanage/MemberInfo.js"></script>
+</body>

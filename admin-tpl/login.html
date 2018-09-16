@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        后台管理登录
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="Thu, 19 Nov 1900 08:52:00 GMT">
+    <link rel="shortcut icon" href="./resource/images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="./resource/images/favicon/favicon.png">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/vendors/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./resource/css/themes/style1/orange-blue.css" class="default-style">
+    <link href="./resource/css/mobiscroll.css?v=1" rel="stylesheet" />
+    <link href="./resource/css/mobiscroll_date.css?v=1" rel="stylesheet" />
+    <link href="./resource/vendors/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <style type="text/css">
+        td {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+    </style>
+    <script>
+
+        if (top.location != self.location)
+            top.location = self.location;
+    </script>
+</head>
+
+<body id="signin-page">
+
+    <div class="page-form">
+        <form class="form" method="post">
+            <!-- @*
+            <img src="resource/images/gallery/1.jpg" class="table loading" />*@ -->
+            <div class="header-content">
+                <h1 id="logintitle">
+                    后台管理登录
+                </h1>
+            </div>
+            <div class="body-content">
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-user"></i>
+                        <input type="text" placeholder="帐   号" name="MERCHANT_USERNAME" id="MERCHANT_USERNAME" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icon right">
+                        <i class="fa fa-key"></i>
+                        <input type="password" placeholder="密   码" name="MERCHANT_PWD" id="MERCHANT_PWD" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group" id="yzm" style="display: none">
+                    <div class="input-icon right">
+                        <input type="text" placeholder="验证码" name="CODE" id="CODE" class="form-control" style="width:70%; float:left;">
+                        <img id="validate" src="/validateCode" alt="看不清?点击更换" style="width: 30%; height: 38px; cursor: pointer; border: none; background-color: white; margin-top: 0.5%;"
+                        />
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="clearfix">&nbsp;</div>
+                <div class="form-group pull-left"></div>
+                <div class="form-group pull-right">
+                    <div style="float: left;">
+                        <label style="color: red; font-weight: bolder; margin-top: 11px; margin-left:20px" id="yzwz"></label>
+                    </div>
+                    <button type="button" id="login" class="btn btn-success" style="margin-left:189px;">
+                        登 录 &nbsp;
+                        <i class="fa fa-chevron-circle-right"></i>
+                    </button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </form>
+    </div>
+    <script src="./resource/js/jquery-1.10.2.min.js"></script>
+    <script src="./resource/js/html5shiv.js"></script>
+    <script src="./resource/js/respond.min.js"></script>
+    <script src="./resource/md5.js"></script>
+    <script src="./resource/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var REMOTE_DATA = "0";
+            if (REMOTE_DATA > 0) {
+                $("#yzm").show();
+            }
+            $("#validate").attr("src", "/validateCode?d=" + Math.random());
+            $("#yzwz").hide();
+            $("#validate").click(function () {
+                $(this).attr("src", "/validateCode?d=" + Math.random());
+            });
+            $("#refresh").click(function () {
+                $("#validate").attr("src", "/validateCode?d=" + Math.random());
+            });
+            $(this).keydown(function (event) {
+                if (event.which == 13) {
+                    $("#login").click();
+                }
+            });
+
+
+            $("#login").click(function () {
+                var userName = $("#MERCHANT_USERNAME").val();
+                var pwd = hex_md5($("#MERCHANT_PWD").val());
+                var CODE = $("#CODE").val();
+                if (userName == null || userName.length == 0) {
+                    alert("请输入用户名!");
+                    return false;
+                }
+                if (pwd == null || pwd.length == 0) {
+                    alert("请输入密码!");
+                    return false;
+                }
+
+                $("#yzwz").show();
+                $("#yzwz").text("身份验证中...");
+                $("#login").attr('disabled', true);
+                var display = $('#yzm').css('display');
+                var count = 0;
+                if (display != 'none') {
+                    count = 1;
+                }
+                $.post("/login", { name: userName, password: pwd, validateCode: CODE, count: count }, function (data) {
+                    data = JSON.parse(data)
+                    if (data.code == 0) {
+                        $("#yzwz").text("登录成功");
+                        if (com.IsPC()) {
+                            window.location.href = "/default";
+                        }
+                        else {
+                            $.post("/CheckRole", { name: userName }, function (data) {
+                                data = JSON.parse(data)
+                                if (data.code == 0) {
+                                    var powerlist = data.power.split(',');
+                                    var findid = "";
+                                    $.each(powerlist, function (n, value) {
+                                        if (value == "41") {
+                                            findid = value;
+                                        }
+                                    });
+                                    if (findid == "41") {//判断是否有数据总览权限
+                                        window.location.href = "/PreviewM";
+                                    }
+                                    else
+                                        window.location.href = "/default";
+                                }
+                                else {
+                                    window.location.href = "/default";
+                                }
+                            })
+                        }
+                    }
+                    else {
+                        $("#yzm").show();
+                        $("#validate").attr("src", "/validateCode?d=" + Math.random());
+                        alert(data.errors);
+                        $("#login").attr('disabled', false);
+                        $("#yzwz").hide();
+                        return false;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
